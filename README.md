@@ -11,3 +11,5 @@ shcal20.14c is the SHCal20 radiocarbon calibration curve (Hogg et al. 2020), use
 RAPANUINW.csv is supplementary data from Lima et al. used to fit their nls models, incluiding time series data on palm cover and SOI index
 
 rapnveget.csv is supplementary data from Lima et al. used to fit their linear regression models
+
+## Pre
