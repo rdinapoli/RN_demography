@@ -19,12 +19,12 @@ Results of general logistic growth model fitted to spd of settlement sites using
 
 Results of uniform null models testing the hypothesis that there was any population change from 1400 - 1750 AD.
 
-![](images/uniform_models.png)
+<img src="images/uniform_models.png" width="700">
 
 Plot of relationship between the SPD and palm cover and SOI index with normalized and non-normalized dates. Gray vertical bars are Lima et al.'s proposed collapses. Black dashed line is European contact in AD 1722.
 
-![](images/spds_palm_SOI.png)
+<img src="images/spds_palm_SOI.png" width="700">
 
 Results of linear models.
 
-![](images/linear_models.png)
+<img src="images/linear_models.png" width="700">
