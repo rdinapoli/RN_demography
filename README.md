@@ -14,7 +14,7 @@ rapnveget.csv is supplementary data from Lima et al. used to fit their linear re
 
 Results of general logistic growth model fitted to spd of settlement sites using different combinations of c14 normalization and back-calibration methods. Gray vertical lines are Lima et al.'s proposed collapse events. Red line is European contact in 1722 AD.
 
-![](main/images/logistic1_models.tiff)
+![](images/logistic1_models.png)
 
 Results of uniform null models testing the hypothesis that there was any population change from 1400 - 1750 AD.
 
