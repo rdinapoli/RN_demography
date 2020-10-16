@@ -12,6 +12,10 @@ rapnveget.csv is supplementary data from Lima et al. used to fit their linear re
 
 ## Preliminary results
 
+The plot below shows the SPD for settlement sites with and without normalization.
+
+<img src="images/spds.png" width="700">
+
 Results of general logistic growth model fitted to spd of settlement sites using different combinations of c14 normalization and back-calibration methods. Gray vertical lines are Lima et al.'s proposed collapse events. Red line is European contact in 1722 AD.
 
 
