@@ -2,70 +2,40 @@ library(rcarbon)
 library(readxl)
 library(dplyr)
 library(here)
+# Source modified calibration script
+source('./ABC_routine/calibrate2.R')
 
-# Read and Combine Data
-RNdates_lima = read.csv(here('data','date_si_lima.csv'))
-RNdates_diNapoli=read.csv('rapanui_DiNapoli_etal.csv')
-RNdates = merge(RNdates_diNapoli,RNdates_lima,by.x='Laboratory.ID',by.y='Laboratory.ID',x.all=TRUE)
+# Read Data
+RNdates=read.csv('rapanui_DiNapoli_etal.csv')
 
-#Optional Sub-setting
-# RNdates = subset(RNdates, Context == "Residential" | Context == "Agricultural")
+# Sub-setting
+RNdates = subset(RNdates, Context %in% c("Residential","Agricultural","Burial"))
 # Create SiteID field for making life easier
-RNdates$SiteID = as.numeric(as.factor(RNdates$SiteName))
-## Should this be: RNdates$SiteID = as.numeric(as.factor(RNdates$CorrectSiteDesignation)) ?
+RNdates$SiteID = as.numeric(as.factor(RNdates$CorrectSiteDesignation))
 
 # Calibrate separately
-RNdates.terrestrial = subset(RNdates,pmarine==0)
-RNdates.marine = subset(RNdates,pmarine==1)
-RNdates.mixed = subset(RNdates,pmarine>0&pmarine<1)
+RNdates.terrestrial = subset(RNdates,CalCurve=='shcal20')
+RNdates.mixed = subset(RNdates,CalCurve=='Bone')
 
-# Normalise?
+# Calibration Settings
 normalised=TRUE
+DeltDaR = -214
+DeltaRErr = 16
+customCurve = mixCurves('shcal20','marine20',p=0.5,resOffsets=DeltDaR,resErrors=DeltaRErr)
 
 # Calibrate Terrestrial and Marine first
-cal.terrestrial = calibrate(RNdates.terrestrial$Age,RNdates.terrestrial$SD,ids=RNdates.terrestrial$Laboratory.ID,calCurves='shcal20',normalised=normalised)
-cal.marine = calibrate(RNdates.marine$Age,RNdates.marine$SD,ids=RNdates.marine$Laboratory.ID,calCurves='marine20',resOffsets=-83,resErrors=34,normalised=normalised)
-
-# Calibrate Mixed... Each unique terrestrial/marine combo has its own curve, and some dates cannot be calibrated
-customCurves = vector('list',length=nrow(RNdates.mixed))
-check = vector(length=nrow(RNdates.mixed)) #store whether the date was successfully calibrated or not via tryCatch
-
-for (i in 1:nrow(RNdates.mixed))
-{
-	if (i==1)
-	{
-		customCurves[[i]] = mixCurves('shcal20','marine20',p=1-RNdates.mixed$pmarine[i],resOffsets=-87,resErrors=34)
-		cal.mixed = tryCatch(calibrate(RNdates.mixed$Age[i],RNdates.mixed$SD[i],ids=RNdates.mixed$Laboratory.ID[i],calCurves=customCurves[[i]],normalised=normalised),error=function(e){return(NULL)})
-		check[i] = ifelse(is.null(cal.mixed),FALSE,TRUE)
-		cal.mixed$metadata$CalCurve = paste0('custom',i)
-	}
-
-	if (i>1)
-	{
-
- 		customCurves[[i]] = mixCurves('shcal20','marine20',p=1-RNdates.mixed$pmarine[i],resOffsets=-87,resErrors=34)
-		cal.mixed.tmp = tryCatch(calibrate(RNdates.mixed$Age[i],RNdates.mixed$SD[i],ids=RNdates.mixed$Laboratory.ID[i],calCurves=customCurves[[i]],normalised=normalised),error=function(e){return(NULL)})
-		check[i] = ifelse(is.null(cal.mixed.tmp),FALSE,TRUE)
-		if (check[i]==TRUE){
-		  cal.mixed.tmp$metadata$CalCurve = paste0('custom',i)
-		  cal.mixed = rcarbon::combine(cal.mixed,cal.mixed.tmp)
-		}
-	}
-}
-
-# which dates were excluded? 
-print(RNdates.mixed[which(!check),])
+cal.terrestrial = calibrate2(RNdates.terrestrial$Age,RNdates.terrestrial$SD,ids=RNdates.terrestrial$Laboratory.ID,calCurves='shcal20',normalised=normalised)
+cal.mixed = calibrate2(RNdates.mixed$Age,RNdates.mixed$SD,ids=RNdates.mixed$Laboratory.ID,calCurves=customCurve,normalised=normalised)
 
 #Combine Calibrations
-cal.combined = rcarbon::combine(cal.terrestrial,cal.marine,cal.mixed)
+cal.combined = rcarbon::combine(cal.terrestrial,cal.mixed)
 
 # Match dates order in cal.combined with original SiteID for binning
-RNdatesWithoutExcludedDates = subset(RNdates,!Laboratory.ID%in%RNdates.mixed[which(!check),1])
-index=match(RNdatesWithoutExcludedDates$Laboratory.ID,cal.combined$metadata$DateID)
+index=match(RNdates$Laboratory.ID,cal.combined$metadata$DateID)
 cal.combined=cal.combined[index] #reorder to match SiteID sequence
 
 # Binning, with h=50 as in the original
-bins = binPrep(sites = RNdatesWithoutExcludedDates$SiteID,ages = cal.combined,h=50)
+bins = binPrep(sites = RNdates$SiteID,ages = cal.combined,h=50)
 
 # Create a curve sampler for pre-ABC random thinning, in case a given bin has dates from different different curves
 binCurveSelector=table(bins,cal.combined$metadata$CalCurve)
@@ -73,8 +43,20 @@ binCurveSelector=table(bins,cal.combined$metadata$CalCurve)
 binCurveSelector = prop.table(binCurveSelector,1)
 
 # Create SPD
-rn.spd =spd(cal.combined,bins=bins,timeRange=c(800,0),runm=100)
+rn.spd =spd(cal.combined,bins=bins,timeRange=c(800,0))
 plot(rn.spd)
+
+# Check sensitivity to mixed dates
+index=match(RNdates.terrestrial$Laboratory.ID,cal.terrestrial$metadata$DateID)
+cal.terrestrial=cal.terrestrial[index] #reorder to match SiteID sequence
+bins.terrestrial = binPrep(sites = RNdates.terrestrial$SiteID,ages = cal.terrestrial,h=50)
+rn.spd.terrestrial = spd(cal.terrestrial,bins=bins.terrestrial,timeRange=c(800,0))
+lines(rn.spd.terrestrial$grid,col=2,lty=2)
+
+# Stack SPD to examine the general impact of different contexts
+contextSPD=stackspd(cal.combined,bins = bins,group = RNdates$Context,timeRange=c(800,0))
+plot(contextSPD,legend.arg=list(cex=0.8))
+
 
 # Save Dates, Bins, curves, and binCurveselector 
 save(cal.combined,bins,binCurveSelector,customCurves,file='calibratedDates.RData')
