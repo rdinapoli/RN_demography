@@ -1,5 +1,5 @@
 calibrate2 <- function(x, errors, ids=NA, dateDetails=NA, calCurves='intcal20', resOffsets=0 , resErrors=0, timeRange=c(55000,0), normalised=TRUE, F14C=FALSE, calMatrix=FALSE, eps=1e-5, ncores=1, verbose=TRUE, ...){
-  
+  require(doParallel)
   if (ncores>1&!requireNamespace("doSNOW", quietly=TRUE)){	
     warning("the doSNOW package is required for multi-core processing; ncores has been set to 1")
     ncores=1
@@ -138,7 +138,6 @@ calibrate2 <- function(x, errors, ids=NA, dateDetails=NA, calCurves='intcal20', 
     if (F14C==FALSE)
     {  
       dens <- BP14C_calibration(age[b], error[b], cclist2[[calCurves[b]]]$mu, cclist2[[calCurves[b]]]$tau2, eps)
-      print(sum(dens))
     }
     if (F14C==TRUE)
     {
