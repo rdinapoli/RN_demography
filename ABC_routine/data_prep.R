@@ -52,6 +52,7 @@ cal.terrestrial=cal.terrestrial[index] #reorder to match SiteID sequence
 bins.terrestrial = binPrep(sites = RNdates.terrestrial$SiteID,ages = cal.terrestrial,h=50)
 rn.spd.terrestrial = spd(cal.terrestrial,bins=bins.terrestrial,timeRange=c(800,0))
 lines(rn.spd.terrestrial$grid,col=2,lty=2)
+legend('topleft',legend=c('All dates','shcal20 only'),lwd=c(10,1),lty=c(1,2),col=c('lightgrey','red'))
 
 # Stack SPD to examine the general impact of different contexts
 contextSPD=stackspd(cal.combined,bins = bins,group = RNdates$Context,timeRange=c(800,0))
