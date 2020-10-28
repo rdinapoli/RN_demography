@@ -21,7 +21,7 @@ nsim=100000
 tol=0.1
 
 # Parallelisation Settings
-ncores = 
+ncores = 10
 cl <- makeCluster(ncores)
 registerDoSNOW(cl)
 pb <- txtProgressBar(max = nsim, style = 3)
@@ -43,7 +43,7 @@ reslist <- foreach (i=1:nsim,.packages=c('rcarbon'),.options.snow = opts) %dopar
 
 epsilon=do.call('rbind.data.frame',reslist)
 result = cbind.data.frame(param,epsilon)
-write.csv(result,file='abc_res.csv')
-save(result,file='abc_res.RData')
+write.csv(result,here('ABC_routine','abc_res.csv'))
+save(result,file=here('ABC_routine','abc_res.RData'))
 
 
