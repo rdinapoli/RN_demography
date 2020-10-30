@@ -41,7 +41,7 @@ posteriors.nrmse=list(post.uncal.norm.nrmse=post.uncal.norm.nrmse,post.uncal.nno
 
 ppchecks.euc = vector('list',length=4)
 ppchecks.euc[1:4] = list(matrix(NA,nrow=abs(diff(timeRange))+1,ncol=tol*nsim))
-ppchecks.nrms = ppchecks.euc
+ppchecks.nrmse = ppchecks.euc
 
 print('Generating Posterior Predictive Check with EUC posteriors')
 pb <- txtProgressBar(max = nsim*tol*4, style = 3)
