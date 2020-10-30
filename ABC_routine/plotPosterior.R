@@ -37,3 +37,23 @@ postPredictiveCheck = function(model=logisticModel,params,type,timeRange=c(800,1
     apply(ppMat[,sample(nsim,size=spaghettiSize)],2,lines,x=c(timeRange[1]:timeRange[2]),col=rgb(0,0,0,alpha))
   }
 }
+
+
+
+
+
+plotPPCheckSPD = function(obs.spd,ppmat,...)
+{
+ plot(obs.spd$grid$calBP,obs.spd$grid$PrDens,xlim=rev(range(obs.spd$grid$calBP)),ylim=c(0,max(c(as.numeric(obs.spd$grid$PrDens),as.numeric(ppmat)))),type='n',xlab='Cal BP',ylab='SPD',...)
+ lo = apply(ppmat,1,quantile,0.025)
+ hi = apply(ppmat,1,quantile,0.975)
+ median = apply(ppmat,1,median)
+ polygon(c(obs.spd$grid$calBP,rev(obs.spd$grid$calBP)),c(lo,rev(hi)),border=NA,col='lightgrey')
+ lines(obs.spd$grid$calBP,median,lwd=2,lty=2)
+ lines(obs.spd$grid$calBP,obs.spd$grid$PrDens,lwd=2,col='red')
+ legend('topleft',legend=c('Observed SPD','Median PPC','95% PPC Interval'),lwd=c(2,2,10),col=c('red','black','lightgrey'),lty=c(1,2,2))
+ }
+
+
+
+
