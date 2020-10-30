@@ -77,7 +77,7 @@ plotPPCheckSPD(obs.norm,ppchecks.euc[[3]],main='Calsample Normalised (EUC)')
 plotPPCheckSPD(obs.nnorm,ppchecks.euc[[4]],main='Calsample Non-Normalised (EUC)')
 dev.off()
 
-png(file = here('ABC_routine','ppcheck_spd_euc.png'),width = 550,height = 600)
+png(file = here('ABC_routine','ppcheck_spd_nrmse.png'),width = 550,height = 600)
 par(mfrow=c(2,2),mar=c(5,4,2,1))
 plotPPCheckSPD(obs.norm,ppchecks.nrmse[[1]],main='Uncalsample Normalised (NRMSE)')
 plotPPCheckSPD(obs.nnorm,ppchecks.nrmse[[2]],main='Uncalsample Non-Normalised (NRMSE)')
