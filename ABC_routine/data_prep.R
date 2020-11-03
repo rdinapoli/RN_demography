@@ -60,8 +60,20 @@ rn.spd.nnorm =spd(cal.combined.nnorm,bins=bins,timeRange=c(800,150))
 # plot(contextSPD.nnorm,legend.arg=list(cex=0.8))
 
 
+# Read Environmental Data
+env=read.csv(here('ABC_routine','tableS5.csv'))
+env$CalBP = BCADtoBP(env$BCCE)
+interpEnv = data.frame(CalBP=800:150)
+interpEnv$Palm = approx(x=env$CalBP[which(!is.na(env$Palm))],y=env$Palm[which(!is.na(env$Palm))],xout=interpEnv$CalBP)$y
+interpEnv$SOI = approx(x=env$CalBP[which(!is.na(env$SOI))],y=env$SOI[which(!is.na(env$SOI))],xout=interpEnv$CalBP)$y
+plot(interpEnv$CalBP,interpEnv$Palm,type='l')
+points(env$CalBP,env$Palm,pch=20)
+plot(interpEnv$CalBP,interpEnv$SOI,type='l')
+points(env$CalBP,env$SOI,pch=20)
+
+
 # Save Dates, Bins, curves, and binCurveselector 
-save(cal.combined.norm,cal.combined.nnorm,bins,binCurveSelector,customCurve,file='calibratedDates.RData')
+save(cal.combined.norm,cal.combined.nnorm,bins,binCurveSelector,customCurve,interpEnv,file='calibratedDates.RData')
 
 
 
