@@ -1,7 +1,6 @@
 library(shiny)
 library(here)
-source(here('ABC_routine','growthModels.R'))
-load(here('calibratedDates.RData'))
+load(here('R_imagefiles','variables.RData')) 
 
 # Simulation and Shiny Application of Flue Season Dynamics
 shinyServer(function(input, output) {
@@ -14,7 +13,7 @@ shinyServer(function(input, output) {
     b1 <- input$b1  
     b2 <- input$b2  
     timeRange <- c(800,150)
-    x1 <- palmData$Palm
+    x1 <- palm$PollenPerc
     x2 <- soi$SOIpr
     CalBP = timeRange[1]:timeRange[2]
     tt = 0:length(CalBP)
@@ -29,7 +28,7 @@ shinyServer(function(input, output) {
     }
     pop = pop[-1]
     K = K[-1]
-    result = data.frame(CalBP=CalBP,Pop=pop,SOI=soi$SOIpr,Palm=palmData$Palm,K=K)
+    result = data.frame(CalBP=CalBP,Pop=pop,SOI=soi$SOIpr,Palm=palm$PollenPerc,K=K)
     list(result=result)
     
   })
