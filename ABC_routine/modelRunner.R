@@ -16,6 +16,12 @@ randomThin = function(bins)
 
 modelRunner = function(model,x.norm,x.nnorm,bins,customCurves,timeRange,simonly=FALSE)
 {
+  # check model
+  if (any(is.na(model$PrDens)|is.nan(model$PrDens)|model$PrDens==Inf))
+  {
+    return(data.frame(euc.cal.norm=NA,euc.cal.nnorm=NA,euc.uncal.norm=NA,euc.uncal.nnorm=NA,nrmse.cal.norm=NA,nrmse.cal.nnorm=NA,nrmse.uncal.norm=NA,nrmse.uncal.nnorm=NA))
+  }
+  
   # generate Target SPD via random thinning
   index=randomThin(bins)
   if (!simonly)
