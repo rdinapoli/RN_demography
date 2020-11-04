@@ -12,7 +12,7 @@ logisticModel = function(k,r,timeRange)
 }
 
 
-logisticGrowthModel = function(nt0=0.01,r,K=1,timeRange)
+logisticGrowthModel = function(nt0=0.01,r,K=1,timeRange,raw=FALSE)
 {
   CalBP = timeRange[1]:timeRange[2]
   tt = 0:length(CalBP)
@@ -23,14 +23,20 @@ logisticGrowthModel = function(nt0=0.01,r,K=1,timeRange)
     pop[i] = pop[i-1] * exp(r*(1-pop[i-1]/K))
   }
   pop = pop[-1]
-  PrDens = pop/sum(pop)
-  d = data.frame(CalBP=CalBP,PrDens=PrDens)
-  class(d)='CalGrid'
+  if (raw)
+  {
+    d = data.frame(CalBP=CalBP,N=pop)
+  } else
+  {
+    PrDens = pop/sum(pop)
+    d = data.frame(CalBP=CalBP,PrDens=PrDens)
+    class(d)='CalGrid'
+  }
   return(d)
 }
 
 
-SingleCovariateLogisticGrowthModel = function(nt0,r,x,a,b,timeRange)
+SingleCovariateLogisticGrowthModel = function(nt0,r,x,a,b,timeRange,raw=FALSE)
 {
   CalBP = timeRange[1]:timeRange[2]
   tt = 0:length(CalBP)
@@ -41,13 +47,19 @@ SingleCovariateLogisticGrowthModel = function(nt0,r,x,a,b,timeRange)
     pop[i] = pop[i-1] * exp(r*(1-pop[i-1]/(a+b*x[i-1])))
   }
   pop = pop[-1]
-  PrDens = pop/sum(pop)
-  d = data.frame(CalBP=CalBP,PrDens=PrDens)
-  class(d)='CalGrid'
+  if (raw)
+  {
+    d = data.frame(CalBP=CalBP,N=pop)
+  } else
+  {
+    PrDens = pop/sum(pop)
+    d = data.frame(CalBP=CalBP,PrDens=PrDens)
+    class(d)='CalGrid'
+  }
   return(d)
 }
 
-DoubleCovariateLogisticGrowthModel = function(nt0,r,x1,x2,a,b1,b2,timeRange)
+DoubleCovariateLogisticGrowthModel = function(nt0,r,x1,x2,a,b1,b2,timeRange,raw=FALSE)
 {
   CalBP = timeRange[1]:timeRange[2]
   tt = 0:length(CalBP)
@@ -58,9 +70,15 @@ DoubleCovariateLogisticGrowthModel = function(nt0,r,x1,x2,a,b1,b2,timeRange)
     pop[i] = pop[i-1] * exp(r*(1-pop[i-1]/(a+b1*x1[i-1]+b2*x2[i-1])))
   }
   pop = pop[-1]
-  PrDens = pop/sum(pop)
-  d = data.frame(CalBP=CalBP,PrDens=PrDens)
-  class(d)='CalGrid'
+  if (raw)
+  {
+    d = data.frame(CalBP=CalBP,N=pop)
+  } else
+  {
+    PrDens = pop/sum(pop)
+    d = data.frame(CalBP=CalBP,PrDens=PrDens)
+    class(d)='CalGrid'
+  }
   return(d)
 }
 
