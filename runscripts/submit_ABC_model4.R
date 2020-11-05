@@ -40,6 +40,23 @@ param=data.frame(nt0=nt0,a=1,r=r,b1=b1,b2=b2)
 x1 = palm$PollenPerc
 x2 = soi$SOIpr
 
+# Check Routine to ensure no parameter combinations with negative carrying capacity
+checkFun = function(x,x1,x2){all((1+x[4]*x1+x[5]*x2) > 0)}
+param$check=apply(param,1,checkFun,x1=x1,x2=x2)
+
+while(any(param$check==FALSE))
+{
+  n = sum(param$check==FALSE)
+  i = which((param$check==FALSE))
+  param$nt0[i] = rtexp(n,rate=10,endpoint=0.5)
+  param$r[i] = rtexp(n,rate=20,endpoint=0.1)
+  param$b1[i] = rnorm(n,mean=0,sd=0.01)
+  param$b2[i] = rnorm(n,mean=0,sd=0.2)
+  param$check=apply(param,1,checkFun,x1=x1,x2=x2)
+}
+
+
+
 # Main for Loop Starts Here
 
 reslist <- foreach (i=1:nsim,.packages=c('rcarbon'),.options.snow = opts) %dopar%
