@@ -1,14 +1,19 @@
-plotMarginalPosterior = function(x,hpdi=0.9,...)
+plotMarginalPosterior = function(x,hpdi=0.9,simple=FALSE,...)
 {
   interval = HPDinterval(mcmc(x),prob = hpdi)
   dens=density(x)
   plot(dens,type='n',...)
+  if (simple)
+  {
+    polygon(x=c(dens$x,rev(dens$x)),y=c(dens$y,rep(0,length(dens$y))),border=NA,col='#0077BC')
+  } else {
   hpdi.x = dens$x[which(dens$x>=interval[1]&dens$x<=interval[2])]
   hpdi.y = dens$y[which(dens$x>=interval[1]&dens$x<=interval[2])]
   polygon(x=c(hpdi.x,rev(hpdi.x)),y=c(hpdi.y,rep(0,length(hpdi.y))),border=NA,col='lightblue')
   polygon(x=c(dens$x,rev(dens$x)),y=c(dens$y,rep(0,length(dens$y))),border='darkgrey')
   abline(v=median(x),lty=2)
   legend('topright',legend=c(paste0(hpdi*100,'% HPDI(Lo): ',round(interval[1],5)),paste0(hpdi*100,'% HPDI(Hi): ',round(interval[2],5)),paste0('Median: ',round(median(x),5))),bty='n')
+  }
 }
 
 plotPPCheckSPD = function(obs.spd,ppmat,...)
