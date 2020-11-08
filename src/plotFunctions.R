@@ -25,6 +25,6 @@ plotPPCheckSPD = function(obs.spd,ppmat,...)
  polygon(c(obs.spd$grid$calBP,rev(obs.spd$grid$calBP)),c(lo,rev(hi)),border=NA,col='lightgrey')
  lines(obs.spd$grid$calBP,median,lwd=2,lty=2)
  lines(obs.spd$grid$calBP,obs.spd$grid$PrDens,lwd=2,col='red')
- legend('topleft',legend=c('Observed SPD','Median PPC','95% PPC Interval'),lwd=c(2,2,10),col=c('red','black','lightgrey'),lty=c(1,2,2))
+ legend('bottomright',legend=c('Observed SPD','Median PPC','95% PPC Interval'),lwd=c(2,2,10),col=c('red','black','lightgrey'),lty=c(1,2,2),cex=0.8)
  }
 
