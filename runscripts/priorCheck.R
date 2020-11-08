@@ -83,17 +83,17 @@ for (i in 1:nsim)
 }
 
 
-jpeg(file=here('figures/temporary/prior_predictive_check.jpeg'),width = 7, height = 7,units='in',res=300)
+jpeg(file=here('figures','temporary','prior_predictive_check.jpeg'),width = 7, height = 7,units='in',res=300)
 par(mfrow=c(2,2),mar=c(5,4,2,1))
 plot(timeRange[1]:timeRange[2],xlim=timeRange,ylim=range(ppcheck.model1),xlab='Cal BP',ylab='N',main='Model 1 (Logistic, K=1)')
-apply(ppcheck.model1,2,lines,x=timeRange[1]:timeRange[2],col=rgb(0,0,0,0.1))
+apply(ppcheck.model1,2,lines,x=timeRange[1]:timeRange[2],col=rgb(0,0,0,0.05))
 
 plot(timeRange[1]:timeRange[2],xlim=timeRange,ylim=range(ppcheck.model2),xlab='Cal BP',ylab='N',main='Model 2 (Logistic, K ~ Palm)')
-apply(ppcheck.model2,2,lines,x=timeRange[1]:timeRange[2],col=rgb(0,0,0,0.1))
+apply(ppcheck.model2,2,lines,x=timeRange[1]:timeRange[2],col=rgb(0,0,0,0.05))
 
 plot(timeRange[1]:timeRange[2],xlim=timeRange,ylim=range(ppcheck.model3),xlab='Cal BP',ylab='N',main='Model 3 (Logistic, K ~ SOI)')
-apply(ppcheck.model3,2,lines,x=timeRange[1]:timeRange[2],col=rgb(0,0,0,0.1))
+apply(ppcheck.model3,2,lines,x=timeRange[1]:timeRange[2],col=rgb(0,0,0,0.05))
 
-plot(timeRange[1]:timeRange[2],xlim=timeRange,ylim=range(ppcheck.model4),xlab='Cal BP',ylab='N',main='Model 3 (Logistic, K ~ Palm,SOI)')
-apply(ppcheck.model4,2,lines,x=timeRange[1]:timeRange[2],col=rgb(0,0,0,0.1))
+plot(timeRange[1]:timeRange[2],xlim=timeRange,ylim=range(ppcheck.model4),xlab='Cal BP',ylab='N',main='Model 4 (Logistic, K ~ Palm,SOI)')
+apply(ppcheck.model4,2,lines,x=timeRange[1]:timeRange[2],col=rgb(0,0,0,0.05))
 dev.off()
