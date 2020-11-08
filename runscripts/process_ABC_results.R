@@ -25,7 +25,7 @@ model4.posterior[[4]] = result[order(model4$euc.uncal.nnorm)[1:(nsim*tol)],]
 model4.posterior[[5]] = result[order(model4$nrmse.cal.norm)[1:(nsim*tol)],]
 model4.posterior[[6]] = result[order(model4$nrmse.cal.nnorm)[1:(nsim*tol)],]
 model4.posterior[[7]] = result[order(model4$nrmse.uncal.norm)[1:(nsim*tol)],]
-model4.posterior[[7]] = result[order(model4$nrmse.uncal.nnorm)[1:(nsim*tol)],]
+model4.posterior[[8]] = result[order(model4$nrmse.uncal.nnorm)[1:(nsim*tol)],]
 
 # Save to R image file
 save(model4.posterior,file=here('R_imagefiles','ABC_posteriors.RData'))
