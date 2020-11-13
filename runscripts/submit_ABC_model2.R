@@ -53,7 +53,7 @@ reslist <- foreach (i=1:nsim,.packages=c('rcarbon'),.options.snow = opts) %dopar
 
 epsilon=do.call('rbind.data.frame',reslist)
 result = cbind.data.frame(param,epsilon)
-write.csv(result,here('raw_abc_results','abc_model4.csv'))
-save(result,file=here('R_imagefiles','abc_model4.RData'))
+write.csv(result,here('raw_abc_results','abc_model2.csv'))
+save(result,file=here('R_imagefiles','abc_model2.RData'))
 
 
