@@ -41,7 +41,7 @@ model2.posterior[[6]] = model2[order(model2$nrmse.cal.nnorm)[1:(nsim*tol)],]
 model2.posterior[[7]] = model2[order(model2$nrmse.uncal.norm)[1:(nsim*tol)],]
 model2.posterior[[8]] = model2[order(model2$nrmse.uncal.nnorm)[1:(nsim*tol)],]
 
-# # model 4
+# # model 3
 # model3.posterior = vector('list',length=8)
 # names(model3.posterior) = c('euc.cal.norm','euc.cal.nnorm','euc.uncal.norm','euc.uncal.nnorm','nrmse.cal.norm','nrmse.cal.nnorm','nrmse.uncal.norm','nrmse.uncal.nnorm')
 # model3.posterior[[1]] = model3[order(model3$euc.cal.norm)[1:(nsim*tol)],]
