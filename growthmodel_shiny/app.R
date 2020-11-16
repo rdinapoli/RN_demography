@@ -19,6 +19,9 @@ ui <- fluidPage(
       sliderInput("r", "Instrinsic Growth Rate:", 
                   min=0.001, max=0.1, value=0.01, step=0.001),
       
+      sliderInput("a", "Carrying Capacity Intercept:", 
+                  min=0.5, max=1.5, value=1, step=0.001),
+      
       sliderInput("b1", "Pollen Cover Parameter", 
                   min=-0.03, max=0.03, value=0, step=0.001),
       
@@ -46,7 +49,7 @@ server <- function(input, output){
     # Model Parameters:
     N0 <- input$N0  
     r <- input$r      
-    a  <- 1   
+    a  <- input$a     
     b1 <- input$b1  
     b2 <- input$b2  
     showK <- input$showK
