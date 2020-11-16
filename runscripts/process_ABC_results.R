@@ -12,7 +12,7 @@ load(here('R_imagefiles','abc_model4.RData'))
 model4 = result
 
 # ABC settings ####
-tol=0.004
+tol=0.01
 nsim = 250000
 
 # Extract Posteriors for each model ####
@@ -80,7 +80,7 @@ allmodels = rbind.data.frame(model1,model2,model4)
 # allmodels = rbind.data.frame(model1,model2,model3,model4)
 
 # Extract Posterior with tol=0.001
-tol=0.001
+tol=0.01
 allmodels.posterior = vector('list',length=8)
 nims=nrow(allmodels)
 names(allmodels.posterior) = c('euc.cal.norm','euc.cal.nnorm','euc.uncal.norm','euc.uncal.nnorm','nrmse.cal.norm','nrmse.cal.nnorm','nrmse.uncal.norm','nrmse.uncal.nnorm')
@@ -92,18 +92,6 @@ allmodels.posterior[[5]] = allmodels[order(allmodels$nrmse.cal.norm)[1:(nsim*tol
 allmodels.posterior[[6]] = allmodels[order(allmodels$nrmse.cal.nnorm)[1:(nsim*tol)],]
 allmodels.posterior[[7]] = allmodels[order(allmodels$nrmse.uncal.norm)[1:(nsim*tol)],]
 allmodels.posterior[[8]] = allmodels[order(allmodels$nrmse.uncal.nnorm)[1:(nsim*tol)],]
-
-# Model Comparison ####
-# # Compute Posterior Proportions
-# model.comparison=lapply(allmodels.posterior,function(x){table(x$model)/nrow(x)})
-# 
-# # Compute Bayes Factor Matrix
-# BF.model4=lapply(model.comparison,function(x){x[2]/x})
-# 
-# # BF.model1=lapply(model.comparison,function(x){x[1]/x})
-# # BF.model2=lapply(model.comparison,function(x){x[2]/x})
-# # BF.model3=lapply(model.comparison,function(x){x[3]/x})
-# # BF.model4=lapply(model.comparison,function(x){x[4]/x})
 
 save(model1.posterior,model2.posterior,model4.posterior,allmodels.posterior,file=here('R_imagefiles','ABC_posteriors.RData'))
 # save(model1.posterior,model2.posterior,model3.posterior,model4.posterior,allmodel.posterior,file=here('R_imagefiles','ABC_posteriors.RData'))
