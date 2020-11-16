@@ -1,6 +1,7 @@
 library(rcarbon)
 library(ReIns)
 library(foreach)
+library(truncnorm)
 library(doParallel)
 library(doSNOW)
 library(here)
@@ -32,7 +33,8 @@ opts <- list(progress = progress)
 set.seed(123)
 nt0 = rtexp(nsim,rate=10,endpoint=0.5)
 r = rtexp(nsim,rate=20,endpoint=0.1)
-param=data.frame(nt0=nt0,a=1,r=r,b1=0,b2=0)
+a = rtruncnorm(nsim,a=0.1,mean=1,sd=0.25)
+param=data.frame(nt0=nt0,a=a,r=r,b1=0,b2=0)
 
 # Extract Covariates
 x1 = palm$PollenPerc
@@ -50,7 +52,6 @@ reslist <- foreach (i=1:nsim,.packages=c('rcarbon'),.options.snow = opts) %dopar
 
 epsilon=do.call('rbind.data.frame',reslist)
 result = cbind.data.frame(param,epsilon)
-write.csv(result,here('raw_abc_results','abc_model1.csv'))
 save(result,file=here('R_imagefiles','abc_model1.RData'))
 
 

@@ -33,9 +33,28 @@ opts <- list(progress = progress)
 set.seed(123)
 nt0 = rtexp(nsim,rate=10,endpoint=0.5)
 r = rtexp(nsim,rate=20,endpoint=0.1)
+a = rtruncnorm(nsim,a=0.1,mean=1,sd=0.25)
 b1 = 0
 b2 = rtruncnorm(nsim,mean=0,a=-0.52,b=0.52,sd=0.2)
-param=data.frame(nt0=nt0,a=1,r=r,b1=b1,b2=b2)
+param=data.frame(nt0=nt0,a=a,r=r,b1=b1,b2=b2)
+
+# Check Routine to ensure no parameter combinations with negative carrying capacity
+checkFun = function(x,x1,x2){all((x[2]+x[4]*x1+x[5]*x2) > 0)}
+param$check=apply(param,1,checkFun,x1=x1,x2=x2)
+
+while(any(param$check==FALSE))
+{
+  n = sum(param$check==FALSE)
+  i = which((param$check==FALSE))
+  param$nt0[i] = rtexp(n,rate=10,endpoint=0.5)
+  param$r[i] = rtexp(n,rate=20,endpoint=0.1)
+  param$a[i] = rtruncnorm(n,a=0.1,mean=1,sd=0.25)
+  param$b1[i] = rnorm(n,mean=0,sd=0.01)
+  param$b2[i] = rnorm(n,mean=0,sd=0.2)
+  param$check=apply(param,1,checkFun,x1=x1,x2=x2)
+}
+param = param[,-ncol(param)]
+
 
 # Extract Covariates
 x1 = palm$PollenPerc
@@ -53,7 +72,6 @@ reslist <- foreach (i=1:nsim,.packages=c('rcarbon'),.options.snow = opts) %dopar
 
 epsilon=do.call('rbind.data.frame',reslist)
 result = cbind.data.frame(param,epsilon)
-write.csv(result,here('raw_abc_results','abc_model3.csv'))
 save(result,file=here('R_imagefiles','abc_model3.RData'))
 
 
