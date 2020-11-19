@@ -21,7 +21,7 @@ ppcheck.model1 = matrix(NA,nrow=abs(diff(timeRange))+1,ncol=nsim)
 
 for (i in 1:nsim)
 {
-  ppcheck.model1[,i] = GrowthModel(nt0=param$nt0[i],r=param$r[i],timeRange=timeRange,b1=param$b1[i],b2=param$b2[i],x1=x1,x2=x2,a=1,raw = TRUE)$N
+  ppcheck.model1[,i] = GrowthModel(nt0=param$nt0[i],r=param$r[i],timeRange=timeRange,b1=param$b1[i],b2=param$b2[i],x1=x1,x2=x2,a=param$a[i],raw = TRUE)$N
 }
 
 # Model 2 Prior Check
@@ -29,12 +29,13 @@ nsim=1000
 nt0 = rtexp(nsim,rate=10,endpoint=0.5)
 a = rnorm(nsim,mean=1,sd=0.25)
 r = rtexp(nsim,rate=20,endpoint=0.1)
-b1 = rtruncnorm(nsim,a=-0.015,b=0.015,mean=0,sd=0.005)
+b1 = rnorm(nsim,mean=0,sd=0.01)
+#b1 = rtruncnorm(nsim,a=-0.015,b=0.015,mean=0,sd=0.005)
 b2 = 0
 param=data.frame(nt0=nt0,a=a,r=r,b1=b1,b2=b2)
 
 # Check Routine
-checkFun = function(x,x1,x2){all((1+x[4]*x1+x[5]*x2) > 0)}
+checkFun = function(x,x1,x2){all((x[2]+x[4]*x1+x[5]*x2) > 0)}
 param$check=apply(param,1,checkFun,x1=x1,x2=x2)
 
 while(any(param$check==FALSE))
@@ -44,7 +45,8 @@ while(any(param$check==FALSE))
   param$nt0[i] = rtexp(n,rate=10,endpoint=0.5)
   param$a[i] = rnorm(n,mean=1,sd=0.25)
   param$r[i] = rtexp(n,rate=20,endpoint=0.1)
-  param$b1[i] = rtruncnorm(nsim,a=-0.015,b=0.015,mean=0,sd=0.005)
+  #param$b1[i] = rtruncnorm(nsim,a=-0.015,b=0.015,mean=0,sd=0.005)
+  param$b1[i] = rnorm(n,mean=0,sd=0.01)
   param$b2[i] = 0
   param$check=apply(param,1,checkFun,x1=x1,x2=x2)
 }
@@ -54,7 +56,7 @@ ppcheck.model2 = matrix(NA,nrow=abs(diff(timeRange))+1,ncol=nsim)
 
 for (i in 1:nsim)
 {
-  ppcheck.model2[,i] = GrowthModel(nt0=param$nt0[i],r=param$r[i],timeRange=timeRange,b1=param$b1[i],b2=param$b2[i],x1=x1,x2=x2,a=1,raw = TRUE)$N
+  ppcheck.model2[,i] = GrowthModel(nt0=param$nt0[i],r=param$r[i],timeRange=timeRange,b1=param$b1[i],b2=param$b2[i],x1=x1,x2=x2,a=param$a[i],raw = TRUE)$N
 }
 
 # Model 3 Prior Check
@@ -62,11 +64,12 @@ nsim=1000
 nt0 = rtexp(nsim,rate=10,endpoint=0.5)
 r = rtexp(nsim,rate=20,endpoint=0.1)
 b1 = 0
-b2 = rtruncnorm(nsim,mean=0,a=-0.52,b=0.52,sd=0.2)
+#b2 = rtruncnorm(nsim,mean=0,a=-0.52,b=0.52,sd=0.2)
+b2 = rnorm(nsim,mean=0,sd=0.2)
 param=data.frame(nt0=nt0,a=a,r=r,b1=b1,b2=b2)
 
 # Check Routine
-checkFun = function(x,x1,x2){all((1+x[4]*x1+x[5]*x2) > 0)}
+checkFun = function(x,x1,x2){all((x[2]+x[4]*x1+x[5]*x2) > 0)}
 param$check=apply(param,1,checkFun,x1=x1,x2=x2)
 
 while(any(param$check==FALSE))
@@ -77,7 +80,8 @@ while(any(param$check==FALSE))
   param$a[i] = rnorm(n,mean=0,sd=0.25)
   param$r[i] = rtexp(n,rate=20,endpoint=0.1)
   param$b1[i] = 0
-  param$b2[i] = rtruncnorm(nsim,mean=0,a=-0.52,b=0.52,sd=0.2)
+  #param$b2[i] = rtruncnorm(nsim,mean=0,a=-0.52,b=0.52,sd=0.2)
+  param$b2[i] = rnorm(n,mean=0,sd=0.2)
   param$check=apply(param,1,checkFun,x1=x1,x2=x2)
 }
 
@@ -86,7 +90,7 @@ ppcheck.model3 = matrix(NA,nrow=abs(diff(timeRange))+1,ncol=nsim)
 
 for (i in 1:nsim)
 {
-  ppcheck.model3[,i] = GrowthModel(nt0=param$nt0[i],r=param$r[i],timeRange=timeRange,b1=param$b1[i],b2=param$b2[i],x1=x1,x2=x2,a=1,raw = TRUE)$N
+  ppcheck.model3[,i] = GrowthModel(nt0=param$nt0[i],r=param$r[i],timeRange=timeRange,b1=param$b1[i],b2=param$b2[i],x1=x1,x2=x2,a=param$a[i],raw = TRUE)$N
 }
 
 # Model 4 Prior Check
@@ -99,7 +103,7 @@ b2 = rnorm(nsim,mean=0,sd=0.2)
 param=data.frame(nt0=nt0,a=1,r=r,b1=b1,b2=b2)
 
 # Check Routine
-checkFun = function(x,x1,x2){all((1+x[4]*x1+x[5]*x2) > 0)}
+checkFun = function(x,x1,x2){all((x[2]+x[4]*x1+x[5]*x2) > 0)}
 param$check=apply(param,1,checkFun,x1=x1,x2=x2)
 
 while(any(param$check==FALSE))
@@ -118,7 +122,7 @@ ppcheck.model4 = matrix(NA,nrow=abs(diff(timeRange))+1,ncol=nsim)
 
 for (i in 1:nsim)
 {
-  ppcheck.model4[,i] = GrowthModel(nt0=param$nt0[i],r=param$r[i],timeRange=timeRange,b1=param$b1[i],b2=param$b2[i],x1=x1,x2=x2,a=1,raw = TRUE)$N
+  ppcheck.model4[,i] = GrowthModel(nt0=param$nt0[i],r=param$r[i],timeRange=timeRange,b1=param$b1[i],b2=param$b2[i],x1=x1,x2=x2,a=param$a[i],raw = TRUE)$N
 }
 
 
