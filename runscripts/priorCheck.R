@@ -14,7 +14,7 @@ x2 = soi$SOIpr
 # Model 1 Prior Check
 nsim=1000
 nt0 = rtexp(nsim,rate=10,endpoint=0.5)
-a = rnorm(nsim,mean=0,sd=0.25)
+a = rnorm(nsim,mean=1,sd=0.25)
 r = rtexp(nsim,rate=20,endpoint=0.1)
 param=data.frame(nt0=nt0,a=a,r=r,b1=0,b2=0)
 ppcheck.model1 = matrix(NA,nrow=abs(diff(timeRange))+1,ncol=nsim)
@@ -27,7 +27,7 @@ for (i in 1:nsim)
 # Model 2 Prior Check
 nsim=1000
 nt0 = rtexp(nsim,rate=10,endpoint=0.5)
-a = rnorm(nsim,mean=0,sd=0.25)
+a = rnorm(nsim,mean=1,sd=0.25)
 r = rtexp(nsim,rate=20,endpoint=0.1)
 b1 = rtruncnorm(nsim,a=-0.015,b=0.015,mean=0,sd=0.005)
 b2 = 0
@@ -42,7 +42,7 @@ while(any(param$check==FALSE))
   n = sum(param$check==FALSE)
   i = which((param$check==FALSE))
   param$nt0[i] = rtexp(n,rate=10,endpoint=0.5)
-  param$a[i] = rnorm(n,mean=0,sd=0.25)
+  param$a[i] = rnorm(n,mean=1,sd=0.25)
   param$r[i] = rtexp(n,rate=20,endpoint=0.1)
   param$b1[i] = rtruncnorm(nsim,a=-0.015,b=0.015,mean=0,sd=0.005)
   param$b2[i] = 0
@@ -92,7 +92,7 @@ for (i in 1:nsim)
 # Model 4 Prior Check
 nsim=1000
 nt0 = rtexp(nsim,rate=10,endpoint=0.5)
-a = rnorm(nsim,mean=0,sd=0.25)
+a = rnorm(nsim,mean=1,sd=0.25)
 r = rtexp(nsim,rate=20,endpoint=0.1)
 b1 = rnorm(nsim,mean=0,sd=0.01)
 b2 = rnorm(nsim,mean=0,sd=0.2)
@@ -107,7 +107,7 @@ while(any(param$check==FALSE))
   n = sum(param$check==FALSE)
   i = which((param$check==FALSE))
   param$nt0[i] = rtexp(n,rate=10,endpoint=0.5)
-  param$a[i] = rnorm(n,mean=0,sd=0.25)
+  param$a[i] = rnorm(n,mean=1,sd=0.25)
   param$r[i] = rtexp(n,rate=20,endpoint=0.1)
   param$b1[i] = rnorm(n,mean=0,sd=0.01)
   param$b2[i] = rnorm(n,mean=0,sd=0.2)
