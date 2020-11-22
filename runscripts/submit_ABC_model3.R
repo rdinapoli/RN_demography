@@ -49,8 +49,8 @@ while(any(param$check==FALSE))
   param$nt0[i] = rtexp(n,rate=10,endpoint=0.5)
   param$r[i] = rtexp(n,rate=20,endpoint=0.1)
   param$a[i] = rtruncnorm(n,a=0.1,mean=1,sd=0.25)
-  param$b1[i] = rnorm(n,mean=0,sd=0.01)
-  param$b2[i] = rnorm(n,mean=0,sd=0.2)
+  param$b1[i] = 0
+  param$b2[i] = rtruncnorm(nsim,mean=0,a=-0.52,b=0.52,sd=0.2)
   param$check=apply(param,1,checkFun,x1=x1,x2=x2)
 }
 param = param[,-ncol(param)]
