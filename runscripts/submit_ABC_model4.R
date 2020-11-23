@@ -17,6 +17,10 @@ bins = bins
 ccurves = list(custom=customCurve)
 timeRange = c(800,150)
 
+# Extract Covariates
+x1 = palm$PollenPerc
+x2 = soi$SOIpr
+
 # ABC Settings
 nsim=250000
 
@@ -53,10 +57,6 @@ while(any(param$check==FALSE))
   param$check=apply(param,1,checkKFun,x1=x1,x2=x2)
 }
 param = param[,-ncol(param)]
-
-# Extract Covariates
-x1 = palm$PollenPerc
-x2 = soi$SOIpr
 
 # Main for Loop Starts Here
 

@@ -17,11 +17,15 @@ bins = bins
 ccurves = list(custom=customCurve)
 timeRange = c(800,150)
 
+# Extract Covariates
+x1 = palm$PollenPerc
+x2 = soi$SOIpr
+
 # ABC Settings
-nsim=250000
+nsim=10
 
 # Parallelisation Settings
-ncores = 10
+ncores = 2
 cl <- makeCluster(ncores)
 registerDoSNOW(cl)
 pb <- txtProgressBar(max = nsim, style = 3)
@@ -33,7 +37,9 @@ set.seed(123)
 nt0 = rtexp(nsim,rate=10,endpoint=1)
 r = rexp(nsim,rate=50)
 a = 1
-param=data.frame(nt0=nt0,r=r,a=a,b1=0,b2=0)
+b1 = 0
+b2 = 0
+param=data.frame(nt0=nt0,r=r,a=a,b1=b1,b2=b2)
 
 # Check Whether Prior Combination generates negative K
 checkKFun = function(x,x1,x2){all((x[3]+x[4]*x1+x[5]*x2) > 0)}
@@ -50,13 +56,7 @@ while(any(param$check==FALSE))
   param$b2[i] = 0
   param$check=apply(param,1,checkKFun,x1=x1,x2=x2)
 }
-
-param = param[,-6]
-
-
-# Extract Covariates
-x1 = palm$PollenPerc
-x2 = soi$SOIpr
+param = param[,-ncol(param)]
 
 # Main for Loop Starts Here
 
