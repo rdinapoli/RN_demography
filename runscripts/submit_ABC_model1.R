@@ -1,7 +1,6 @@
 library(rcarbon)
 library(ReIns)
 library(foreach)
-library(truncnorm)
 library(doParallel)
 library(doSNOW)
 library(here)
@@ -31,10 +30,29 @@ opts <- list(progress = progress)
 
 # Generate Priors
 set.seed(123)
-nt0 = rtexp(nsim,rate=10,endpoint=0.5)
-r = rtexp(nsim,rate=20,endpoint=0.1)
-a = rtruncnorm(nsim,a=0.1,mean=1,sd=0.25)
-param=data.frame(nt0=nt0,a=a,r=r,b1=0,b2=0)
+nt0 = rtexp(nsim,rate=10,endpoint=1)
+r = rexp(nsim,rate=50)
+a = 1
+param=data.frame(nt0=nt0,r=r,a=a,b1=0,b2=0)
+
+# Check Whether Prior Combination generates negative K
+checkKFun = function(x,x1,x2){all((x[3]+x[4]*x1+x[5]*x2) > 0)}
+param$check = apply(param,1,checkKFun,x1=x1,x2=x2)
+
+while(any(param$check==FALSE))
+{
+  n = sum(param$check==FALSE)
+  i = which((param$check==FALSE))
+  param$nt0[i] = rtexp(n,rate=10,endpoint=1)
+  param$r[i] = rexp(n,rate=50)
+  param$a[i] = 1
+  param$b1[i] = 0
+  param$b2[i] = 0
+  param$check=apply(param,1,checkKFun,x1=x1,x2=x2)
+}
+
+param = param[,-6]
+
 
 # Extract Covariates
 x1 = palm$PollenPerc
@@ -51,7 +69,7 @@ reslist <- foreach (i=1:nsim,.packages=c('rcarbon'),.options.snow = opts) %dopar
   }
 
 epsilon=do.call('rbind.data.frame',reslist)
-result = cbind.data.frame(param,epsilon)
-save(result,file=here('R_imagefiles','abc_model1.RData'))
+model1 = cbind.data.frame(param,epsilon)
+save(model1,file=here('R_imagefiles','abc_model1.RData'))
 
 
