@@ -22,10 +22,10 @@ x1 = palm$PollenPerc
 x2 = soi$SOIpr
 
 # ABC Settings
-nsim=10
+nsim=250000
 
 # Parallelisation Settings
-ncores = 2
+ncores = 10
 cl <- makeCluster(ncores)
 registerDoSNOW(cl)
 pb <- txtProgressBar(max = nsim, style = 3)
