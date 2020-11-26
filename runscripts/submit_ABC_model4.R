@@ -39,7 +39,7 @@ r = rexp(nsim,rate=50)
 a = 1
 b1 = rnorm(nsim,mean=0,sd=0.01)
 b2 = rnorm(nsim,mean=0,sd=0.2)
-param = data.frame(nt0=nt0,a=a,r=r,b1=b1,b2=b2)
+param = data.frame(nt0=nt0,r=r,a=a,b1=b1,b2=b2)
 
 # Check Whether Prior Combination generates negative K
 checkKFun = function(x,x1,x2){all((x[3]+x[4]*x1+x[5]*x2) > 0)}
