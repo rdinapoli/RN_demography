@@ -36,30 +36,12 @@ opts <- list(progress = progress)
 set.seed(123)
 nt0 = rtexp(nsim,rate=10,endpoint=1)
 r = rexp(nsim,rate=50)
-a = 1
+a = 0
 b1 = 0
 b2 = rnorm(nsim,mean=0,sd=0.2)
-param=data.frame(nt0=nt0,r=r,a=a,b1=b1,b2=b2)
-
-# Check Whether Prior Combination generates negative K
-checkKFun = function(x,x1,x2){all((x[3]+x[4]*x1+x[5]*x2) > 0)}
-param$check=apply(param,1,checkKFun,x1=x1,x2=x2)
-
-while(any(param$check==FALSE))
-{
-  n = sum(param$check==FALSE)
-  i = which((param$check==FALSE))
-  param$nt0[i] = rtexp(n,rate=10,endpoint=1)
-  param$r[i] = rexp(n,rate=50)
-  param$a[i] = 1
-  param$b1[i] = 0
-  param$b2[i] = rnorm(n,mean=0,sd=0.2)
-  param$check=apply(param,1,checkKFun,x1=x1,x2=x2)
-}
-param = param[,-ncol(param)]
+param = data.frame(nt0=nt0,r=r,a=a,b1=b1,b2=b2)
 
 # Main for Loop Starts Here
-
 reslist <- foreach (i=1:nsim,.packages=c('rcarbon'),.options.snow = opts) %dopar%
   {
     set.seed(i)
