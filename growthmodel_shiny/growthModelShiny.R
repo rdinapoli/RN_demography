@@ -19,14 +19,11 @@ ui <- fluidPage(
       sliderInput("r", "Instrinsic Growth Rate:", 
                   min=0.001, max=0.1, value=0.01, step=0.001),
       
-      sliderInput("a", "Carrying Capacity Intercept:", 
-                  min=0.5, max=1.5, value=1, step=0.001),
-      
       sliderInput("b1", "Pollen Cover Parameter", 
                   min=-0.03, max=0.03, value=0, step=0.001),
       
       sliderInput("b2", "SOI Cover Parameter:", 
-                  min=-0.5, max=0.5, value=0, step=0.01),
+                  min=-0.6, max=0.6, value=0, step=0.01),
       
       checkboxInput("showK",label = "Show K",value=FALSE),
       
@@ -49,7 +46,7 @@ server <- function(input, output){
     # Model Parameters:
     N0 <- input$N0  
     r <- input$r      
-    a  <- input$a     
+    a  <- 0   
     b1 <- input$b1  
     b2 <- input$b2  
     showK <- input$showK
@@ -66,11 +63,11 @@ server <- function(input, output){
     K[1] = NA
     for (i in 2:length(tt))
     {
-      pop[i] = pop[i-1] * exp(r*(1-pop[i-1]/(a+b1*x1[i-1]+b2*x2[i-1])))
+      pop[i] = pop[i-1] * exp(r*(1-pop[i-1]/exp(a+b1*x1[i-1]+b2*x2[i-1])))
       K[i] = (a+b1*x1[i-1]+b2*x2[i-1])
     }
     pop = pop[-1]
-    K = K[-1]
+    K = exp(K[-1])
     result = data.frame(CalBP=CalBP,Pop=pop,SOI=soi$SOIpr,Palm=palm$PollenPerc,K=K)
     list(result=result,showK=showK,showSOI=showSOI,showPalm=showPalm)
   })
