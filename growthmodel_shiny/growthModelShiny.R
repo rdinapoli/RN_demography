@@ -75,7 +75,7 @@ server <- function(input, output){
   output$graph <- renderPlot({
     if (any(mydata()[[1]]$K<0))
     {
-      plot(0,0,xlim=c(800,150),xlab='Cal BP',ylab = 'Population Size',type='l',lwd=2.5,ylim=c(0,1),axes=FALSE)
+      plot(0,0,xlim=c(800,150),xlab='Cal BP',ylab = 'Scaled Population Size',type='l',lwd=2.5,ylim=c(0,1),axes=FALSE)
       axis(1)
       axis(2)
       text(x=500,y=0.5,labels = 'Negative K!',cex=4)
