@@ -45,3 +45,6 @@ data_prep.R Prepares the data used in the analyses, including calibrating and bi
 
 submit_ABC_model1.R through model4.R execute the ABC routine for each of the growth models. Note that each of these take a very long time to run.
 
+## Shiny app
+
+An interactive Shiny app is available for users to explore the demographic model results under different parameterizations. This app can be executed within Rstudio or accessed online here: https://dinapoli.shinyapps.io/RN_Demographic_Growth_Model/
