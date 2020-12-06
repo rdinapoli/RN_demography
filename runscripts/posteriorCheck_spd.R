@@ -104,8 +104,7 @@ for (k in 1:8)
   }
 }
 
-save(postpcheck.model1.spd,postpcheck.model2.spd,postpcheck.model4.spd,file=here('R_imagefiles','post_pred_spd.RData'))
-# save(postpcheck.model1.spd,postpcheck.model2.spd,postpcheck.model3.spd,postpcheck.model4.spd,file=here('R_imagefiles','post_pred_spd.RData'))
+save(postpcheck.model1.spd,postpcheck.model2.spd,postpcheck.model3.spd,postpcheck.model4.spd,file=here('R_imagefiles','post_pred_spd.RData'))
 
 
 
