@@ -1,3 +1,6 @@
+library(here)
+library(rcarbon)
+
 # Load Posterior Predictive Check & Observed SPDs ####
 load(here('R_imagefiles','post_pred_spd.RData'))
 load(here('R_imagefiles/','variables.RData'))
