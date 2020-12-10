@@ -16,15 +16,17 @@ plotMarginalPosterior = function(x,hpdi=0.9,simple=FALSE,...)
   }
 }
 
-plotPPCheckSPD = function(obs.spd,ppmat,...)
+plotPPCheckSPD = function(obs.spd,ppmat,obs.col='red',obs.lty=1,obs.lwd=2,sim.lty=2,sim.fillcol='lightgrey',sim.col='black',sim.lwd=2,loc='topleft',legend=TRUE,...)
 {
  plot(obs.spd$grid$calBP,obs.spd$grid$PrDens,xlim=rev(range(obs.spd$grid$calBP)),ylim=c(0,max(c(as.numeric(obs.spd$grid$PrDens),as.numeric(ppmat)))),type='n',xlab='Cal BP',ylab='SPD',...)
  lo = apply(ppmat,1,quantile,0.025)
  hi = apply(ppmat,1,quantile,0.975)
  median = apply(ppmat,1,median)
- polygon(c(obs.spd$grid$calBP,rev(obs.spd$grid$calBP)),c(lo,rev(hi)),border=NA,col='lightgrey')
- lines(obs.spd$grid$calBP,median,lwd=2,lty=2)
- lines(obs.spd$grid$calBP,obs.spd$grid$PrDens,lwd=2,col='red')
- legend('bottomright',legend=c('Observed SPD','Median PPC','95% PPC Interval'),lwd=c(2,2,10),col=c('red','black','lightgrey'),lty=c(1,2,2),cex=0.8)
+ polygon(c(obs.spd$grid$calBP,rev(obs.spd$grid$calBP)),c(lo,rev(hi)),border=NA,col=sim.fillcol)
+ lines(obs.spd$grid$calBP,median,lwd=sim.lwd,lty=sim.lty,col=sim.col)
+ lines(obs.spd$grid$calBP,obs.spd$grid$PrDens,lwd=obs.lwd,col=obs.col,lty=obs.lty)
+ if (legend){
+ legend(loc,legend=c('Observed SPD','Median PPC','95% PPC Interval'),lwd=c(obs.lwd,sim.lwd,10),col=c(obs.col,sim.col,sim.fillcol),lty=c(obs.lty,sim.lty,1),cex=0.8,bty='n')
+ }
  }
 
