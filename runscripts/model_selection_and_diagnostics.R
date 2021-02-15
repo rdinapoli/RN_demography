@@ -7,7 +7,7 @@ source(here('src','tolDiagPlot.R'))
 modelSelection(allmodels.posterior[[1]])
 modelSelection(allmodels.posterior[[2]])
 modelSelection(allmodels.posterior[[3]])
-modelSelection(allmodels.posterior[[4]])
+modelSelection(allmodels.posterior[[4]]) #euc.uncal.nnorm, results presented in main text
 modelSelection(allmodels.posterior[[5]])
 modelSelection(allmodels.posterior[[6]])
 modelSelection(allmodels.posterior[[7]])

@@ -8,7 +8,7 @@ load(here('R_imagefiles','abc_model3.RData'))
 load(here('R_imagefiles','abc_model4.RData'))
 
 # ABC settings ####
-tol=0.01
+tol=0.004 #1000 best models
 nsim = 250000
 
 # Extract Posteriors for each model ####
@@ -73,8 +73,8 @@ model4$model='m4'
 ## Combine models
 allmodels = rbind.data.frame(model1,model2,model3,model4)
  
-# Extract Posterior with tol=0.001
-tol=0.01
+# Extract Posterior with tol=0.004, the 1000 best models
+tol=0.004
 allmodels.posterior = vector('list',length=8)
 nims=nrow(allmodels)
 names(allmodels.posterior) = c('euc.cal.norm','euc.cal.nnorm','euc.uncal.norm','euc.uncal.nnorm','nrmse.cal.norm','nrmse.cal.nnorm','nrmse.uncal.norm','nrmse.uncal.nnorm')
