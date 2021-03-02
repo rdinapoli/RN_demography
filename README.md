@@ -6,7 +6,7 @@ The main workflow is described below and outputs are stored as R image files in 
 
 ## Data Sets and Data Preparation
 
-All data files used in the paper can be found in the data **(add link)** directory, which contains: 
+All data files used in the paper can be found in the [data](./data) directory, which contains: 
 rapanui_DiNapoli_etal.csv is the current radiocarbon data for Rapa Nui with corrected site codes and classification of dates by archaeological context.
 RAPANUINW.csv is supplementary data from Lima et al. (2020) used to fit their nls models, incluiding time series data on palm cover and SOI index.
 rapnveget.csv is supplementary data from Lima et al. (2020) used to fit their linear regression models.
