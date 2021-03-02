@@ -26,3 +26,10 @@ The runscripts **(add link)** folder contains the scripts to run the above funct
 ## Shiny app
 
 An interactive Shiny app is available for users to explore the demographic model results under different parameterizations. This app can be executed within Rstudio or accessed online here: https://dinapoli.shinyapps.io/RN_Demographic_Growth_Model/
+
+## File Structure
+
+## R Settings
+
+## License
+CC-BY 3.0
