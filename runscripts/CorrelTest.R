@@ -77,7 +77,7 @@ nnorm.soi.post <- data.frame(name='Post-490 BP',SPD='non-normalized',r=spd.nnorm
 cor.results.prepost.palms <- rbind.data.frame(norm.palms.pre, norm.palms.post, nnorm.palms.pre, nnorm.palms.post)
 cor.results.prepost.soi <- rbind.data.frame(norm.soi.pre, norm.soi.post, nnorm.soi.pre, nnorm.soi.post)
 
-# plot spds by variables and correlation coefficients
+# create plot of spds by variables at 490 BP threshold and correlation coefficients
 p1 <- ggplot(data=nnrm, aes(x=x, y=y)) + 
   geom_line(aes(color=palms), size=2) + 
   scale_color_viridis_c() +
@@ -131,4 +131,31 @@ dev.off()
 
 tiff(file=here('figures','temporary','correlation_results.tiff'), width=12, height=8, compression = 'lzw', units='in', res=600)
 grid.arrange(p1, p2, p3, p4, cor.plot1,cor.plot2, nrow=3)
+dev.off()
+
+#create Figure 2 in the main text
+p2a <- ggplot(data=nnrm, aes(x=x, y=y)) + 
+  geom_line(aes(color=palms), size=2) + 
+  scale_color_viridis_c() +
+  labs(subtitle="a)") +
+  xlab("cal BP")+
+  ylab("SPD") +
+  xlim(800,200) +
+  geom_vline(xintercept=228, linetype='dashed', color='black', size=1)
+p2b <- ggplot(data=nnrm, aes(x=x, y=y)) + 
+  geom_line(aes(color=SOI), size=2) + 
+  scale_color_viridis_c(option='magma')+
+  labs(subtitle="b)") +
+  xlab("cal BP")+
+  ylab("SPD") +
+  xlim(800,200) +
+  geom_vline(xintercept=228, linetype='dashed', color='black', size=1)
+grid.arrange(p2a, p2b, nrow=1)
+
+jpeg(file=here('figures','main_paper','Figure2_obs_SPD.jpeg'), width=10, height=4, units='in', res=300)
+grid.arrange(p2a, p2b, nrow=1)
+dev.off()
+
+tiff(file=here('figures','main_paper','Figure2_obs_SPD.tiff'), width=10, height=4, compression = 'lzw', units='in', res=600)
+grid.arrange(p2a, p2b, nrow=1)
 dev.off()
