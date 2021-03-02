@@ -6,18 +6,15 @@ The main workflow is described below and outputs are stored as R image files in 
 
 ## Data Sets and Data Preparation
 
-All data files are contained in the data folder, which contains: 
-
-rapanui_DiNapoli_etal.csv is the radiocarbon data with corrected site codes and classification of dates by archaeological context
-
+All data files used in the paper can be found in the data(add link) directory, which contains: 
+rapanui_DiNapoli_etal.csv is the current radiocarbon data for Rapa Nui with corrected site codes and classification of dates by archaeological context
 RAPANUINW.csv is supplementary data from Lima et al. (2020) used to fit their nls models, incluiding time series data on palm cover and SOI index
-
 rapnveget.csv is supplementary data from Lima et al. (2020) used to fit their linear regression models
-
-date_si_lima.csv is the supplementary radiocarbon data from Lima et al. (2020)
-
+date_si_lima.csv is the supplementary radiocarbon data used by Lima et al. (2020)
+tableS5.csv is supplementary information from Lima et al. (2020)
 yan2011soipr.txt is the Southern Oscillation Index (SOI) reconstruction from Yan et al. (2011).
 
+The file data_prep.R in the runscripts(add link) directory contains script for calibrating radiocarbon dates, generating the observed SPDs, and paleoenvironmental time series. The output of this script is saved in the variables.Rdata file in the R_imagefiles(add link) directory. Note that data preparation uses a custom calibration function, calibrate2.R in the src(add link) directory that allows the use of custom mixed curves.
 ## src
 
 This folder contains custom R functions for running the ABC analysis:
