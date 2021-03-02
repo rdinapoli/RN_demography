@@ -125,11 +125,11 @@ cor.plot2 <- ggplot(data=cor.results.prepost.soi, aes(x=r, y=name, color=SPD)) +
   labs(subtitle="f) correlation between SOI and SPDs") 
 grid.arrange(p1, p2, p3, p4, cor.plot1,cor.plot2, nrow=3)
 
-jpeg(file=here('figures','temporary','correlation_results.jpeg'), width=12, height=8, units='in', res=300)
+jpeg(file=here('figures','supplemental','correlation_results.jpeg'), width=12, height=8, units='in', res=300)
 grid.arrange(p1, p2, p3, p4, cor.plot1,cor.plot2, nrow=3)
 dev.off()
 
-tiff(file=here('figures','temporary','correlation_results.tiff'), width=12, height=8, compression = 'lzw', units='in', res=600)
+tiff(file=here('figures','supplemental','correlation_results.tiff'), width=12, height=8, compression = 'lzw', units='in', res=600)
 grid.arrange(p1, p2, p3, p4, cor.plot1,cor.plot2, nrow=3)
 dev.off()
 

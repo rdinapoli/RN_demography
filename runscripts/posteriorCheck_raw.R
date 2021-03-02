@@ -37,7 +37,7 @@ for (k in 1:8)
 # Plot results
 titles = c('Calsample - Normalised','Calsample - Non-normalised','Uncalsample - Normalised','Uncalsample - Non-normalised')
 
-jpeg(file=here('figures','temporary','posterior_predictive_check_model1_euc.jpeg'),width = 7, height = 7,units='in',res=300)
+jpeg(file=here('figures','supplemental','posterior_predictive_check_model1_euc.jpeg'),width = 7, height = 7,units='in',res=300)
 par(mfrow=c(2,2),mar=c(5,4,2,1))
 for(i in 1:4)
 {
@@ -46,7 +46,7 @@ for(i in 1:4)
 }
 dev.off()
 
-jpeg(file=here('figures','temporary','posterior_predictive_check_model1_nrmse.jpeg'),width = 7, height = 7,units='in',res=300)
+jpeg(file=here('figures','supplemental','posterior_predictive_check_model1_nrmse.jpeg'),width = 7, height = 7,units='in',res=300)
 par(mfrow=c(2,2),mar=c(5,4,2,1))
 for(i in 5:8)
 {
@@ -73,7 +73,7 @@ for (k in 1:8)
 # Plot results
 titles = c('Calsample - Normalised','Calsample - Non-normalised','Uncalsample - Normalised','Uncalsample - Non-normalised')
 
-jpeg(file=here('figures','temporary','posterior_predictive_check_model2_euc.jpeg'),width = 7, height = 7,units='in',res=300)
+jpeg(file=here('figures','supplemental','posterior_predictive_check_model2_euc.jpeg'),width = 7, height = 7,units='in',res=300)
 par(mfrow=c(2,2),mar=c(5,4,2,1))
 for(i in 1:4)
 {
@@ -82,7 +82,7 @@ for(i in 1:4)
 }
 dev.off()
 
-jpeg(file=here('figures','temporary','posterior_predictive_check_model2_nrmse.jpeg'),width = 7, height = 7,units='in',res=300)
+jpeg(file=here('figures','supplemental','posterior_predictive_check_model2_nrmse.jpeg'),width = 7, height = 7,units='in',res=300)
 par(mfrow=c(2,2),mar=c(5,4,2,1))
 for(i in 5:8)
 {
@@ -114,7 +114,7 @@ for (k in 1:8)
 # Plot results
 titles = c('Calsample - Normalised','Calsample - Non-normalised','Uncalsample - Normalised','Uncalsample - Non-normalised')
 
-jpeg(file=here('figures','temporary','posterior_predictive_check_model3_euc.jpeg'),width = 7, height = 7,units='in',res=300)
+jpeg(file=here('figures','supplemental','posterior_predictive_check_model3_euc.jpeg'),width = 7, height = 7,units='in',res=300)
 par(mfrow=c(2,2),mar=c(5,4,2,1))
 for(i in 1:4)
 {
@@ -123,7 +123,7 @@ for(i in 1:4)
 }
 dev.off()
 
-jpeg(file=here('figures','temporary','posterior_predictive_check_model3_nrmse.jpeg'),width = 7, height = 7,units='in',res=300)
+jpeg(file=here('figures','supplemental','posterior_predictive_check_model3_nrmse.jpeg'),width = 7, height = 7,units='in',res=300)
 par(mfrow=c(2,2),mar=c(5,4,2,1))
 for(i in 5:8)
 {
@@ -149,7 +149,7 @@ for (k in 1:8)
 # Plot results
 titles = c('Calsample - Normalised','Calsample - Non-normalised','Uncalsample - Normalised','Uncalsample - Non-normalised')
 
-jpeg(file=here('figures','temporary','posterior_predictive_check_model4_euc.jpeg'),width = 7, height = 7,units='in',res=300)
+jpeg(file=here('figures','supplemental','posterior_predictive_check_model4_euc.jpeg'),width = 7, height = 7,units='in',res=300)
 par(mfrow=c(2,2),mar=c(5,4,2,1))
 for(i in 1:4)
 {
@@ -158,7 +158,7 @@ for(i in 1:4)
 }
 dev.off()
 
-jpeg(file=here('figures','temporary','posterior_predictive_check_model4_nrmse.jpeg'),width = 7, height = 7,units='in',res=300)
+jpeg(file=here('figures','supplemental','posterior_predictive_check_model4_nrmse.jpeg'),width = 7, height = 7,units='in',res=300)
 par(mfrow=c(2,2),mar=c(5,4,2,1))
 for(i in 5:8)
 {

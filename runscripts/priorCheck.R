@@ -80,7 +80,7 @@ for (i in 1:nsim)
 
 # Plot Prior Check ####
 
-jpeg(file=here('figures','temporary','prior_predictive_check_N.jpeg'),width = 7, height = 7,units='in',res=300)
+jpeg(file=here('figures','supplemental','prior_predictive_check_N.jpeg'),width = 7, height = 7,units='in',res=300)
 par(mfrow=c(2,2),mar=c(5,4,2,1))
 plot(timeRange[1]:timeRange[2],xlim=timeRange,ylim=range(ppcheck.model1_N),xlab='Cal BP',ylab='N',main='Model 1 (Logistic, K=1)')
 apply(ppcheck.model1_N,2,lines,x=timeRange[1]:timeRange[2],col=rgb(0,0,0,0.05))
@@ -95,7 +95,7 @@ plot(timeRange[1]:timeRange[2],xlim=timeRange,ylim=range(ppcheck.model4_N),xlab=
 apply(ppcheck.model4_N,2,lines,x=timeRange[1]:timeRange[2],col=rgb(0,0,0,0.05))
 dev.off()
 
-jpeg(file=here('figures','temporary','prior_predictive_check_PrDens.jpeg'),width = 7, height = 7,units='in',res=300)
+jpeg(file=here('figures','supplemental','prior_predictive_check_PrDens.jpeg'),width = 7, height = 7,units='in',res=300)
 par(mfrow=c(2,2),mar=c(5,4,2,1))
 plot(timeRange[1]:timeRange[2],xlim=timeRange,ylim=range(ppcheck.model1_PrDens),xlab='Cal BP',ylab='PrDens',main='Model 1 (Logistic, K=1)')
 apply(ppcheck.model1_PrDens,2,lines,x=timeRange[1]:timeRange[2],col=rgb(0,0,0,0.05))
