@@ -2,7 +2,7 @@
  
 This repository contains data and scripts to reproduce analyses in "A robust approach for evaluating models of climate-induced population dynamics using radiocarbon-based paleodemography and Approximate Bayesian Computation: an example from Rapa Nui (Easter Island)"
 
-The main workflow is described below and outputs are stored as R image files in the R_images(add link) direction and figures in the figures(add link) directory.
+The main workflow is described below and outputs are stored as R image files in the R_images(add link) directory and figures in the figures(add link) directory.
 
 ## Data Sets and Data Preparation
 
