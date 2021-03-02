@@ -1,9 +1,10 @@
-# RN_demography
-This repository contains data and code to reproduce analyses in "Evaluating models of climate-induced population dynamics using radiocarbon-based paleodemography and Approximate Bayesian Computation: an example from Rapa Nui (Easter Island)"
+# A robust approach for evaluating models of climate-induced population dynamics using radiocarbon-based paleodemography and Approximate Bayesian Computation - an example from Rapa Nui (Easter Island): source code, data, scripts, and Shiny app
+ 
+This repository contains data and scripts to reproduce analyses in "A robust approach for evaluating models of climate-induced population dynamics using radiocarbon-based paleodemography and Approximate Bayesian Computation: an example from Rapa Nui (Easter Island)"
 
-# Notes on files/folders
+The main workflow is described below and outputs are stored as R image files in the R_images(add link) direction and figures in the figures(add link) directory.
 
-## Data
+## Data Sets and Data Preparation
 
 All data files are contained in the data folder, which contains: 
 
