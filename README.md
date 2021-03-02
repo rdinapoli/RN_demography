@@ -1,4 +1,4 @@
-# A robust approach for evaluating models of climate-induced population dynamics using radiocarbon-based paleodemography and Approximate Bayesian Computation - an example from Rapa Nui (Easter Island): source code, data, scripts, and Shiny app
+## A robust approach for evaluating models of climate-induced population dynamics using radiocarbon-based paleodemography and Approximate Bayesian Computation - an example from Rapa Nui (Easter Island): source code, data, scripts, and Shiny app
  
 This repository contains data and scripts to reproduce analyses in "A robust approach for evaluating models of climate-induced population dynamics using radiocarbon-based paleodemography and Approximate Bayesian Computation: an example from Rapa Nui (Easter Island)"
 
