@@ -1,6 +1,6 @@
-## A robust approach for modeling human demography and paleoenvironmental interactions using Approximate Bayesian Computation: an example from Rapa Nui (Easter Island): source code, data, scripts, and Shiny app
+## Approximate Bayesian Computation of radiocarbon and paleoenvironmental record suggests resilience of Rapa Nui (Easter Island) communities to ecological change: source code, data, scripts, and Shiny app
  
-This repository contains data and scripts to reproduce analyses in "A robust approach for evaluating models of climate-induced population dynamics using radiocarbon-based paleodemography and Approximate Bayesian Computation: an example from Rapa Nui (Easter Island)"
+This repository contains data and scripts to reproduce analyses in "Approximate Bayesian Computation of radiocarbon and paleoenvironmental record suggests resilience of Rapa Nui (Easter Island) communities to ecological change"
 
 The main workflow is described below and outputs are stored as R image files in the [R_imagefiles](./R_imagefiles) directory and figures in the [figures](./figures) directory.
 
