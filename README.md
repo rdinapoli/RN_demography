@@ -30,7 +30,7 @@ In summary, the workflow to reproduce these analyses requires first running `dat
 An interactive Shiny app is available for users to explore the demographic model results under different parameterizations. This app can be executed within Rstudio using the file in the [growthmodel_shiny](./growthmodel_shiny) directory or accessed online here: https://dinapoli.shinyapps.io/RN_Demographic_Growth_Model/
 
 ## File Structure
-
+```
 ├── data
 │   ├── date_si_lima.csv
 │   ├── rapanui_DiNapoli_etal.csv
@@ -165,7 +165,7 @@ An interactive Shiny app is available for users to explore the demographic model
     ├── plotFunctions.R
     ├── randomThin.R
     └── tolDiagPlot.R
-
+```
 ## R Settings
 
 ```
