@@ -1,6 +1,6 @@
-## Approximate Bayesian Computation of radiocarbon and paleoenvironmental record suggests resilience of Rapa Nui (Easter Island) communities to ecological change: source code, data, scripts, and Shiny app
+## Approximate Bayesian Computation of radiocarbon and paleoenvironmental record shows population resilience on Rapa Nui (Easter Island): source code, data, scripts, and Shiny app
  
-This repository contains data and scripts to reproduce analyses in "Approximate Bayesian Computation of radiocarbon and paleoenvironmental record suggests resilience of Rapa Nui (Easter Island) communities to ecological change"
+This repository contains data and scripts to reproduce analyses in "Approximate Bayesian Computation of radiocarbon and paleoenvironmental record shows population resilience on Rapa Nui (Easter Island)"
 
 The main workflow is described below and outputs are stored as R image files in the [R_imagefiles](./R_imagefiles) directory and figures in the [figures](./figures) directory.
 
