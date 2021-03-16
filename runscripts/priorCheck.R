@@ -30,8 +30,8 @@ for (i in 1:nsim)
 
 # Model 2 Prior Check
 nsim=1000
-param$nt0[i] = rtexp(n,rate=10,endpoint=1)
-param$r[i] = rexp(n,rate=50)
+nt0 = rtexp(nsim,rate=10,endpoint=1)
+r = rexp(nsim,rate=50)
 a = 0
 b1 = rnorm(nsim,mean=0,sd=0.01)
 b2 = 0
@@ -46,8 +46,8 @@ for (i in 1:nsim)
 
 # Model 3 Prior Check
 nsim=1000
-param$nt0[i] = rtexp(n,rate=10,endpoint=1)
-param$r[i] = rexp(n,rate=50)
+nt0 = rtexp(nsim,rate=10,endpoint=1)
+r = rexp(nsim,rate=50)
 a = 0
 b1 = 0
 b2 = rnorm(nsim,mean=0,sd=0.2)
@@ -62,8 +62,8 @@ for (i in 1:nsim)
 
 # Model 4 Prior Check
 nsim=1000
-param$nt0[i] = rtexp(n,rate=10,endpoint=1)
-param$r[i] = rexp(n,rate=50)
+nt0 = rtexp(nsim,rate=10,endpoint=1)
+r = rexp(nsim,rate=50)
 a = 0
 b1 = rnorm(nsim,mean=0,sd=0.01)
 b2 = rnorm(nsim,mean=0,sd=0.2)
