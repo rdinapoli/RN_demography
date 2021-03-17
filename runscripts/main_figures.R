@@ -8,6 +8,8 @@ library(rcarbon)
 ### Figure 3 Fitted Model ####
 load(here('R_imagefiles/','variables.RData'))
 source(here('src','growthModel.R'))
+load(here('R_imagefiles','ABC_posteriors.RData'))
+source(here('src','plotFunctions.R'))
 
 # General Settings 
 timeRange = c(800,150)
