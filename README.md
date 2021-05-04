@@ -32,139 +32,141 @@ An interactive Shiny app is available for users to explore the demographic model
 ## File Structure
 ```
 ├── data
-│   ├── date_si_lima.csv
-│   ├── rapanui_DiNapoli_etal.csv
-│   ├── RAPANUINW.xlsx
-│   ├── rapnveget.xlsx
-│   ├── tableS5.csv
-│   └── yan2011soipr.txt
+│   ├── date_si_lima.csv
+│   ├── RAPANUINW.xlsx
+│   ├── rapanui_DiNapoli_etal.csv
+│   ├── rapnveget.xlsx
+│   ├── tableS5.csv
+│   ├── yan2011soipr.txt
 ├── figures
-│   ├── main_paper
-│   │   ├── Figure2_obs_SPD.jpeg
-│   │   ├── Figure2_obs_SPD.tiff
-│   │   ├── figure3_prdens.pdf
-│   │   └── figure4.pdf
-│   ├── supplemental
-│   │   ├── correlation_results.jpeg
-│   │   ├── correlation_results.tiff
-│   │   ├── m1_jointpost_euc.cal.nnorm.jpeg
-│   │   ├── m1_jointpost_euc.cal.norm.jpeg
-│   │   ├── m1_jointpost_euc.uncal.nnorm.jpeg
-│   │   ├── m1_jointpost_euc.uncal.norm.jpeg
-│   │   ├── m1_jointpost_nrmse.cal.nnorm.jpeg
-│   │   ├── m1_jointpost_nrmse.cal.norm.jpeg
-│   │   ├── m1_jointpost_nrmse.uncal.nnorm.jpeg
-│   │   ├── m1_jointpost_nrmse.uncal.norm.jpeg
-│   │   ├── m1_post_euc.cal.nnorm.pdf
-│   │   ├── m1_post_euc.cal.norm.pdf
-│   │   ├── m1_post_euc.uncal.nnorm.pdf
-│   │   ├── m1_post_euc.uncal.norm.pdf
-│   │   ├── m1_post_nrmse.cal.nnorm.pdf
-│   │   ├── m1_post_nrmse.cal.norm.pdf
-│   │   ├── m1_post_nrmse.uncal.nnorm.pdf
-│   │   ├── m1_post_nrmse.uncal.norm.pdf
-│   │   ├── m2_jointpost_euc.cal.nnorm.jpeg
-│   │   ├── m2_jointpost_euc.cal.norm.jpeg
-│   │   ├── m2_jointpost_euc.uncal.nnorm.jpeg
-│   │   ├── m2_jointpost_euc.uncal.norm.jpeg
-│   │   ├── m2_jointpost_nrmse.cal.nnorm.jpeg
-│   │   ├── m2_jointpost_nrmse.cal.norm.jpeg
-│   │   ├── m2_jointpost_nrmse.uncal.nnorm.jpeg
-│   │   ├── m2_jointpost_nrmse.uncal.norm.jpeg
-│   │   ├── m2_post_euc.cal.nnorm.pdf
-│   │   ├── m2_post_euc.cal.norm.pdf
-│   │   ├── m2_post_euc.uncal.nnorm.pdf
-│   │   ├── m2_post_euc.uncal.norm.pdf
-│   │   ├── m2_post_nrmse.cal.nnorm.pdf
-│   │   ├── m2_post_nrmse.cal.norm.pdf
-│   │   ├── m2_post_nrmse.uncal.nnorm.pdf
-│   │   ├── m2_post_nrmse.uncal.norm.pdf
-│   │   ├── m3_jointpost_euc.cal.nnorm.jpeg
-│   │   ├── m3_jointpost_euc.cal.norm.jpeg
-│   │   ├── m3_jointpost_euc.uncal.nnorm.jpeg
-│   │   ├── m3_jointpost_euc.uncal.norm.jpeg
-│   │   ├── m3_jointpost_nrmse.cal.nnorm.jpeg
-│   │   ├── m3_jointpost_nrmse.cal.norm.jpeg
-│   │   ├── m3_jointpost_nrmse.uncal.nnorm.jpeg
-│   │   ├── m3_jointpost_nrmse.uncal.norm.jpeg
-│   │   ├── m3_post_euc.cal.nnorm.pdf
-│   │   ├── m3_post_euc.cal.norm.pdf
-│   │   ├── m3_post_euc.uncal.nnorm.pdf
-│   │   ├── m3_post_euc.uncal.norm.pdf
-│   │   ├── m3_post_nrmse.cal.nnorm.pdf
-│   │   ├── m3_post_nrmse.cal.norm.pdf
-│   │   ├── m3_post_nrmse.uncal.nnorm.pdf
-│   │   ├── m3_post_nrmse.uncal.norm.pdf
-│   │   ├── m4_jointpost_euc.cal.nnorm.jpeg
-│   │   ├── m4_jointpost_euc.cal.norm.jpeg
-│   │   ├── m4_jointpost_euc.uncal.nnorm.jpeg
-│   │   ├── m4_jointpost_euc.uncal.norm.jpeg
-│   │   ├── m4_jointpost_nrmse.cal.nnorm.jpeg
-│   │   ├── m4_jointpost_nrmse.cal.norm.jpeg
-│   │   ├── m4_jointpost_nrmse.uncal.nnorm.jpeg
-│   │   ├── m4_jointpost_nrmse.uncal.norm.jpeg
-│   │   ├── m4_post_euc.cal.nnorm.pdf
-│   │   ├── m4_post_euc.cal.norm.pdf
-│   │   ├── m4_post_euc.uncal.nnorm.pdf
-│   │   ├── m4_post_euc.uncal.norm.pdf
-│   │   ├── m4_post_nrmse.cal.nnorm.pdf
-│   │   ├── m4_post_nrmse.cal.norm.pdf
-│   │   ├── m4_post_nrmse.uncal.nnorm.pdf
-│   │   ├── m4_post_nrmse.uncal.norm.pdf
-│   │   ├── posterior_predictive_check_model1_euc.jpeg
-│   │   ├── posterior_predictive_check_model1_nrmse.jpeg
-│   │   ├── posterior_predictive_check_model1_spd_euc.pdf
-│   │   ├── posterior_predictive_check_model1_spd_nrmse.pdf
-│   │   ├── posterior_predictive_check_model2_euc.jpeg
-│   │   ├── posterior_predictive_check_model2_nrmse.jpeg
-│   │   ├── posterior_predictive_check_model2_spd_euc.pdf
-│   │   ├── posterior_predictive_check_model2_spd_nrmse.pdf
-│   │   ├── posterior_predictive_check_model3_euc.jpeg
-│   │   ├── posterior_predictive_check_model3_nrmse.jpeg
-│   │   ├── posterior_predictive_check_model3_spd_euc.pdf
-│   │   ├── posterior_predictive_check_model3_spd_nrmse.pdf
-│   │   ├── posterior_predictive_check_model4_euc.jpeg
-│   │   ├── posterior_predictive_check_model4_nrmse.jpeg
-│   │   ├── posterior_predictive_check_model4_spd_euc.pdf
-│   │   ├── posterior_predictive_check_model4_spd_nrmse.pdf
-│   │   ├── prior_predictive_check_N.jpeg
-│   │   └── prior_predictive_check_PrDens.jpeg
-│   └── supplementary
+│   ├── main_paper
+│       ├── Figure2_obs_SPD.jpeg
+│       ├── Figure2_obs_SPD.tiff
+│       ├── figure3_prdens.pdf
+│       ├── figure4.pdf
+│   ├── supplemental
+│       ├── correlation_results.jpeg
+│       ├── correlation_results.tiff
+│       ├── Kruschke_fig.pdf
+│       ├── m1_jointpost_euc.cal.nnorm.jpeg
+│       ├── m1_jointpost_euc.cal.norm.jpeg
+│       ├── m1_jointpost_euc.uncal.nnorm.jpeg
+│       ├── m1_jointpost_euc.uncal.norm.jpeg
+│       ├── m1_jointpost_nrmse.cal.nnorm.jpeg
+│       ├── m1_jointpost_nrmse.cal.norm.jpeg
+│       ├── m1_jointpost_nrmse.uncal.nnorm.jpeg
+│       ├── m1_jointpost_nrmse.uncal.norm.jpeg
+│       ├── m1_post_euc.cal.nnorm.pdf
+│       ├── m1_post_euc.cal.norm.pdf
+│       ├── m1_post_euc.uncal.nnorm.pdf
+│       ├── m1_post_euc.uncal.norm.pdf
+│       ├── m1_post_nrmse.cal.nnorm.pdf
+│       ├── m1_post_nrmse.cal.norm.pdf
+│       ├── m1_post_nrmse.uncal.nnorm.pdf
+│       ├── m1_post_nrmse.uncal.norm.pdf
+│       ├── m2_jointpost_euc.cal.nnorm.jpeg
+│       ├── m2_jointpost_euc.cal.norm.jpeg
+│       ├── m2_jointpost_euc.uncal.nnorm.jpeg
+│       ├── m2_jointpost_euc.uncal.norm.jpeg
+│       ├── m2_jointpost_nrmse.cal.nnorm.jpeg
+│       ├── m2_jointpost_nrmse.cal.norm.jpeg
+│       ├── m2_jointpost_nrmse.uncal.nnorm.jpeg
+│       ├── m2_jointpost_nrmse.uncal.norm.jpeg
+│       ├── m2_post_euc.cal.nnorm.pdf
+│       ├── m2_post_euc.cal.norm.pdf
+│       ├── m2_post_euc.uncal.nnorm.pdf
+│       ├── m2_post_euc.uncal.norm.pdf
+│       ├── m2_post_nrmse.cal.nnorm.pdf
+│       ├── m2_post_nrmse.cal.norm.pdf
+│       ├── m2_post_nrmse.uncal.nnorm.pdf
+│       ├── m2_post_nrmse.uncal.norm.pdf
+│       ├── m3_jointpost_euc.cal.nnorm.jpeg
+│       ├── m3_jointpost_euc.cal.norm.jpeg
+│       ├── m3_jointpost_euc.uncal.nnorm.jpeg
+│       ├── m3_jointpost_euc.uncal.norm.jpeg
+│       ├── m3_jointpost_nrmse.cal.nnorm.jpeg
+│       ├── m3_jointpost_nrmse.cal.norm.jpeg
+│       ├── m3_jointpost_nrmse.uncal.nnorm.jpeg
+│       ├── m3_jointpost_nrmse.uncal.norm.jpeg
+│       ├── m3_post_euc.cal.nnorm.pdf
+│       ├── m3_post_euc.cal.norm.pdf
+│       ├── m3_post_euc.uncal.nnorm.pdf
+│       ├── m3_post_euc.uncal.norm.pdf
+│       ├── m3_post_nrmse.cal.nnorm.pdf
+│       ├── m3_post_nrmse.cal.norm.pdf
+│       ├── m3_post_nrmse.uncal.nnorm.pdf
+│       ├── m3_post_nrmse.uncal.norm.pdf
+│       ├── m4_jointpost_euc.cal.nnorm.jpeg
+│       ├── m4_jointpost_euc.cal.norm.jpeg
+│       ├── m4_jointpost_euc.uncal.nnorm.jpeg
+│       ├── m4_jointpost_euc.uncal.norm.jpeg
+│       ├── m4_jointpost_nrmse.cal.nnorm.jpeg
+│       ├── m4_jointpost_nrmse.cal.norm.jpeg
+│       ├── m4_jointpost_nrmse.uncal.nnorm.jpeg
+│       ├── m4_jointpost_nrmse.uncal.norm.jpeg
+│       ├── m4_post_euc.cal.nnorm.pdf
+│       ├── m4_post_euc.cal.norm.pdf
+│       ├── m4_post_euc.uncal.nnorm.pdf
+│       ├── m4_post_euc.uncal.norm.pdf
+│       ├── m4_post_nrmse.cal.nnorm.pdf
+│       ├── m4_post_nrmse.cal.norm.pdf
+│       ├── m4_post_nrmse.uncal.nnorm.pdf
+│       ├── m4_post_nrmse.uncal.norm.pdf
+│       ├── posterior_predictive_check_model1_euc.jpeg
+│       ├── posterior_predictive_check_model1_nrmse.jpeg
+│       ├── posterior_predictive_check_model1_spd_euc.pdf
+│       ├── posterior_predictive_check_model1_spd_nrmse.pdf
+│       ├── posterior_predictive_check_model2_euc.jpeg
+│       ├── posterior_predictive_check_model2_nrmse.jpeg
+│       ├── posterior_predictive_check_model2_spd_euc.pdf
+│       ├── posterior_predictive_check_model2_spd_nrmse.pdf
+│       ├── posterior_predictive_check_model3_euc.jpeg
+│       ├── posterior_predictive_check_model3_nrmse.jpeg
+│       ├── posterior_predictive_check_model3_spd_euc.pdf
+│       ├── posterior_predictive_check_model3_spd_nrmse.pdf
+│       ├── posterior_predictive_check_model4_euc.jpeg
+│       ├── posterior_predictive_check_model4_nrmse.jpeg
+│       ├── posterior_predictive_check_model4_spd_euc.pdf
+│       ├── posterior_predictive_check_model4_spd_nrmse.pdf
+│       ├── prior_predictive_check_N.jpeg
+│       ├── prior_predictive_check_PrDens.jpeg
+│       ├── taphonomic_correction_test.pdf
 ├── growthmodel_shiny
-│   └── growthModelShiny.R
+│   ├── growthModelShiny.R
 ├── README.md
-├── R_imagefiles
-│   ├── abc_model1.RData
-│   ├── abc_model2.RData
-│   ├── abc_model3.RData
-│   ├── abc_model4.RData
-│   ├── ABC_posteriors.RData
-│   ├── post_pred_spd.RData
-│   └── variables.RData
 ├── RN_demography.Rproj
 ├── runscripts
-│   ├── CorrelTest.R
-│   ├── data_prep.R
-│   ├── main_figures.R
-│   ├── model_selection_and_diagnostics.R
-│   ├── plot_posteriorCheck_spd.R
-│   ├── posteriorCheck_raw.R
-│   ├── posteriorCheck_spd.R
-│   ├── posteriorPlot.R
-│   ├── priorCheck.R
-│   ├── process_ABC_results.R
-│   ├── submit_ABC_model1.R
-│   ├── submit_ABC_model2.R
-│   ├── submit_ABC_model3.R
-│   └── submit_ABC_model4.R
-└── src
+│   ├── 01_data_prep.R
+│   ├── 02_priorCheck.R
+│   ├── 03_submit_ABC_model1.R
+│   ├── 04_submit_ABC_model2.R
+│   ├── 05_submit_ABC_model3.R
+│   ├── 06_submit_ABC_model4.R
+│   ├── 07_process_ABC_results.R
+│   ├── 08_model_selection_and_diagnostics.R
+│   ├── 09_posteriorCheck_raw.R
+│   ├── 10_posteriorPlot.R
+│   ├── 11_posteriorCheck_spd.R
+│   ├── 12_plot_posteriorCheck_spd.R
+│   ├── 13_CorrelTest.R
+│   ├── 14_main_figures.R
+│   ├── 15_TaphonomicCorrectionTest.R
+├── R_imagefiles
+│   ├── abc_model1.RData
+│   ├── abc_model2.RData
+│   ├── abc_model3.RData
+│   ├── abc_model4.RData
+│   ├── ABC_posteriors.RData
+│   ├── post_pred_spd.RData
+│   ├── variables.RData
+├── src
     ├── calibrate2.R
     ├── growthModel.R
     ├── modelRunner.R
     ├── modelSelection.R
     ├── plotFunctions.R
     ├── randomThin.R
-    └── tolDiagPlot.R
+    ├── tolDiagPlot.R
 ```
 ## R Settings
 
