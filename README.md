@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/302719495.svg)](https://zenodo.org/badge/latestdoi/302719495)
+
 ## Approximate Bayesian Computation of radiocarbon and paleoenvironmental record shows population resilience on Rapa Nui (Easter Island): source code, data, scripts, and Shiny app
  
 This repository contains data and scripts to reproduce analyses in "Approximate Bayesian Computation of radiocarbon and paleoenvironmental record shows population resilience on Rapa Nui (Easter Island)"
